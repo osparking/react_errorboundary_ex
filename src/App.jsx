@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Suspecious from "./components/Sussecious";
+import Suspecious from "./components/Suspecious";
 
 function App() {
   const [count, setCount] = useState(0);
