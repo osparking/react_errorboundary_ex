@@ -1,17 +1,9 @@
-import { useState } from "react";
-import "./App.css";
-import Suspecious from "./components/Sussecious";
-
-function App() {
-  const [count, setCount] = useState(0);
-
+export default function App() {
   return (
     <>
       <div>
-        <Suspecious />
+        <NotExistingComponent />
       </div>
     </>
   );
 }
-
-export default App;
