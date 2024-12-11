@@ -1,17 +1,27 @@
-import { useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import "./App.css";
-import Suspecious from "./components/Suspecious";
+import ContainsNotExistingComponent from "./components/ContainsNotExistingComponent";
+("use client");
+export default function App() {
+  function fallbackRender({ error, resetErrorBoundary }) {
+    // Call resetErrorBoundary() to reset the error boundary and retry the render.
 
-function App() {
-  const [count, setCount] = useState(0);
+    return (
+      <div role="alert">
+        <p>오작동한 이유(아래):</p>
+        <pre style={{ color: "deeppink" }}>{error.message}</pre>
+      </div>
+    );
+  }
 
   return (
     <>
       <div>
-        <Suspecious />
+        {/* <ErrorBoundary fallback={<div>뭔가 잘못되었다.</div>}> */}
+        <ErrorBoundary fallbackRender={fallbackRender}>
+          <ContainsNotExistingComponent />
+        </ErrorBoundary>
       </div>
     </>
   );
 }
-
-export default App;
